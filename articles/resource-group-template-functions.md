@@ -494,6 +494,25 @@ The following example converts the user-provided parameter value to upper case.
         "upperCaseAppName": "[toUpper(parameters('appName'))]"
     }
 
+##trim
+
+**trim(stringToTrim)**
+
+Removes all leading and trailing white-space characters from the specific string.
+
+| Parameter                          | Required | Description
+| :--------------------------------: | :------: | :----------
+| stringToTrim                       |   Yes    | The string to trim.
+
+The following example trims the white-sapce characters from the user-provided parameter value.
+
+    "parameters": {
+        "appName": { "type": "string" }
+    },
+    "variables": { 
+        "trimAppName": "[trim(parameters('appName'))]"
+    }
+
 
 ## uniqueString
 
@@ -529,6 +548,20 @@ The following example shows how to create a unique name for a storage account ba
         "type": "Microsoft.Storage/storageAccounts", 
         ...
 
+## uri
+
+**uri (baseUri, relativeUri)**
+
+This function creates a Uri instance by combining the baseUri and the relativeUri string.
+
+| Parameter                          | Required | Description
+| :--------------------------------: | :------: | :----------
+| baseUri                            |   Yes    | The base uri string.
+| relativeUri                        |   Yes    | The relative uri string to add to the base uri string.
+
+The following examples show how to use uri to create a absolute uri in template link.The result would be http://foobar.com/123/nested/foo.json. 
+   "templateLink”: “[uri(‘http://foobar.com/123/’, ‘nested/foo.json’)]”
+    
 
 ## variables
 
@@ -539,7 +572,6 @@ Returns the value of variable. The specified variable name must be defined in th
 | Parameter                          | Required | Description
 | :--------------------------------: | :------: | :----------
 | variable Name                      |   Yes    | The name of the variable to return.
-
 
 ## Next Steps
 - For a description of the sections in an Azure Resource Manager template, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)
